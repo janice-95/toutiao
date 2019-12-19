@@ -69,7 +69,18 @@ export default {
     login () {
       this.$refs.myForm.validate((isOK) => {
         if (isOK) {
-          console.log('校验成功')
+          // 校验通过调用登录接口
+          this.$axios({
+            url: '/authorizations', // 请求地址 axios 没有指定 类型 默认走get类型
+            method: 'post', // 类型
+            data: this.loginForm // body 参数
+          }).then(result => {
+            // 只接受正确结果
+            // 前端缓存 登录成功返回给我们的令牌
+            window.localStorage.setItem('user-token', result.data.data.token)
+          }).catch(() => {
+
+          })
         }
       })
     }
