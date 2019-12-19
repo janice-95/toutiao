@@ -12,20 +12,23 @@
       <el-form  ref="myForm" :model="loginForm" :rules="loginRules" style="margin-top:20px">
         <!-- 表单域 里面   放置 input/select/checkbox 相当于一行-->
         <el-form-item prop="mobile">
+
           <!-- el-form-itemx相当于一行一项 -->
           <el-input v-model="loginForm.mobile" placeholder="请输入手机号"></el-input>
         </el-form-item>
+
         <!-- 表单域 -->
         <el-form-item prop="code">
           <el-input v-model="loginForm.code" style="width:65%" placeholder="验证码"></el-input>
           <el-button style="float:right" plain>发送验证码</el-button>
         </el-form-item>
         <el-form-item prop="agree">
+
           <!-- 复选框 -->
           <el-checkbox v-model="loginForm.agree">我已阅读并同意用户协议和隐私条款</el-checkbox>
         </el-form-item>
-        <!-- 登录按钮 -->
 
+        <!-- 登录按钮 -->
         <el-form-item>
           <el-button @click="login" type="primary" style="width:100%">登录</el-button>
         </el-form-item>
