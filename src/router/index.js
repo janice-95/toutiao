@@ -10,11 +10,11 @@ const routes = [
     redirect: '/home'
   },
   {
-    path: '/home8',
+    path: '/home',
     name: 'home',
     component: Home
   }, {
-    path: 'login',
+    path: '/login',
     component: Login
   }
   // {
