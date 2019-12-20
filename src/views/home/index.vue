@@ -8,18 +8,17 @@
     <el-container>
       <!-- 右面上下 -->
       <el-header>
-        <layout-header  style="height:50px; line-height:50px"></layout-header>
+        <layout-header style="height:50px; line-height:50px"></layout-header>
       </el-header>
-      <el-main>Main</el-main>
+      <el-main>
+        <router-view></router-view>
+      </el-main>
     </el-container>
   </el-container>
 </template>
 
 <script>
-
-export default {
-
-}
+export default {}
 </script>
 
 <style>
