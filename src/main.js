@@ -6,6 +6,7 @@ import axios from 'axios'
 import 'element-ui/lib/theme-chalk/index.css' // 引入样式
 import './styles/index.less' // 引入我的样式初始化
 import component from './components'
+import './permission'
 
 Vue.config.productionTip = false
 Vue.use(ElementUI)
@@ -16,3 +17,5 @@ new Vue({
   router,
   render: h => h(App)
 }).$mount('#app')
+// 先导出
+export default router
