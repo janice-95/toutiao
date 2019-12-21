@@ -1,0 +1,107 @@
+[33mcommit cbcc85b37201cbf08d1a580a8ee5f8af80701c64[m[33m ([m[1;36mHEAD -> [m[1;32mmaster[m[33m)[m
+Author: hsu <janice_95@126.com>
+Date:   Sat Dec 21 15:45:52 2019 +0800
+
+    主页模块-导航守卫
+
+[33mcommit 9c523c703260bfe233df927edaa4fe8abdd19183[m[33m ([m[1;31morigin/master[m[33m)[m
+Author: hsu <janice_95@126.com>
+Date:   Sat Dec 21 02:08:37 2019 +0800
+
+    主页模块-默认导航
+
+[33mcommit 61c10b6a9770d5600e9962f12d50a08f901dbdc7[m
+Author: hsu <janice_95@126.com>
+Date:   Sat Dec 21 01:56:11 2019 +0800
+
+    主页模块-头部退出系统
+
+[33mcommit 8ae72eada52216b1c2c09ac8f4eda4f3f328a955[m
+Author: hsu <janice_95@126.com>
+Date:   Sat Dec 21 01:44:35 2019 +0800
+
+    主页模块-头部退出系统
+
+[33mcommit 4d5dc9919a95499ef14ff3f4c51b02580aa6c89b[m
+Author: hsu <janice_95@126.com>
+Date:   Sat Dec 21 01:26:54 2019 +0800
+
+    主页模块-头部信息查询
+
+[33mcommit b26d2efd8e93d454b77074abe8da2e580ba7da51[m
+Author: hsu <janice_95@126.com>
+Date:   Sat Dec 21 01:07:34 2019 +0800
+
+    全局注册插件的使用方式Vue.use
+
+[33mcommit 82ae644ea53e5b51d715e0a6a9ed917a01ae5a5c[m
+Author: hsu <janice_95@126.com>
+Date:   Sat Dec 21 00:54:41 2019 +0800
+
+    主页模块-头部结构及下拉菜单
+
+[33mcommit 4e0a455b095bd6230ced1d551711bca3e521cf96[m
+Author: hsu <janice_95@126.com>
+Date:   Fri Dec 20 23:28:00 2019 +0800
+
+    主页模块-左侧导航菜单
+
+[33mcommit c6dc83874894c34f50bb70f38857a41f200ce5ab[m
+Author: hsu <janice_95@126.com>
+Date:   Fri Dec 20 21:29:55 2019 +0800
+
+    ”主页模块-页面布局
+
+[33mcommit 3cb512672633f603abf3284bded4653024177e8b[m
+Author: hsu <janice_95@126.com>
+Date:   Thu Dec 19 21:02:17 2019 +0800
+
+    登录模块-登录成功及失败处理
+
+[33mcommit 6820e356a4e5eb023578ff8f2998e8d30480968a[m
+Author: hsu <janice_95@126.com>
+Date:   Thu Dec 19 20:34:01 2019 +0800
+
+    登录模块-登录请求-token存储问题
+
+[33mcommit 26749283c09e48142054d1e0070f058e0da0a1b5[m
+Author: hsu <janice_95@126.com>
+Date:   Thu Dec 19 15:02:46 2019 +0800
+
+    登录模块-安装axios-配置全局使用
+
+[33mcommit b4aeb024686223e4df7f9a4a8d560724b25023e6[m
+Author: hsu <janice_95@126.com>
+Date:   Thu Dec 19 13:27:44 2019 +0800
+
+    登录模块-数据绑定及校验
+
+[33mcommit ba3c10bad0b19ed006da8e3af8c6a06a084e5ef1[m
+Author: hsu <janice_95@126.com>
+Date:   Thu Dec 19 10:53:16 2019 +0800
+
+    页面布局及样式
+
+[33mcommit db4d6fd65d1170980910796bafd4e123734fb65e[m
+Author: hsu <janice_95@126.com>
+Date:   Thu Dec 19 00:27:01 2019 +0800
+
+    新建登录和主页
+
+[33mcommit bb913b670993d9747a8aa41dc5ee8a6a02a736dd[m
+Author: hsu <janice_95@126.com>
+Date:   Wed Dec 18 23:49:26 2019 +0800
+
+    准备资源
+
+[33mcommit 63f3a9155ccb0ae2633c928fff63c47f6c005e14[m
+Author: hsu <janice_95@126.com>
+Date:   Wed Dec 18 23:22:21 2019 +0800
+
+    安装ElementUI
+
+[33mcommit 942340d616cc2ffc40b2f59d1c4c69757f384ab3[m
+Author: hsu <janice_95@126.com>
+Date:   Wed Dec 18 23:01:08 2019 +0800
+
+    init

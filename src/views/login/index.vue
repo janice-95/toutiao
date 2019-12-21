@@ -77,7 +77,7 @@ export default {
           }).then(result => {
             // 只接受正确结果
             // 前端缓存 登录成功返回给我们的令牌
-            window.localStorage.setItem('user-token', result.data.data.token)
+            window.localStorage.setItem('user-token', result.data.token)
             // 编程式导航
             this.$router.push('/home')
           }).catch(() => {
