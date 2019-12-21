@@ -12,7 +12,7 @@ axios.interceptors.request.use((config) => {
   return config// 表示会用改请求
 }, function () {
 })
-// 响应拦截
+// 响应拦截F
 axios.interceptors.response.use(function (response) {
   // 对响应的数据处理成功时进入
   return response.data ? response.data : {}
@@ -40,6 +40,6 @@ axios.interceptors.response.use(function (response) {
       break
   }
   Message({ message })
-  return new Promise(function () {})
+  return new Promise(function () { })
 })
 export default axios
