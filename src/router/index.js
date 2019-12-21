@@ -3,6 +3,7 @@ import VueRouter from 'vue-router'
 import Home from '../views/home'
 import Login from '../views/login'
 import Home2 from '../views/home/home.vue'
+import Comment from '../components/common/bread-crumb.vue'
 Vue.use(VueRouter)
 
 const routes = [
@@ -17,10 +18,16 @@ const routes = [
     children: [{
       path: '',
       component: Home2
+    }, {
+      path: 'comment', // 完整 相对
+      component: () => import('../views/comment')
     }]
   }, {
     path: '/login',
     component: Login
+  }, {
+    path: '/comment',
+    component: Comment
   }
   // {
   //   path: '/about',
