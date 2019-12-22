@@ -2,6 +2,7 @@
 import axios from 'axios'
 import router from '../router'
 import { Message } from 'element-ui'
+import JSONBig from 'json-bigint'
 axios.defaults.baseURL = 'http://ttapi.research.itcast.cn/mp/v1_0'
 //
 axios.interceptors.request.use((config) => {
@@ -12,6 +13,10 @@ axios.interceptors.request.use((config) => {
   return config// 表示会用改请求
 }, function () {
 })
+axios.defaults.transformResponse = [function (data) {
+  // data 是响应回来的字符串
+  return JSONBig.parse(data)
+}]
 // 响应拦截F
 axios.interceptors.response.use(function (response) {
   // 对响应的数据处理成功时进入
