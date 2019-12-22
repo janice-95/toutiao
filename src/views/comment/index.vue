@@ -6,7 +6,7 @@
     </bread-crumb>
 
     <!-- 表格 -->
-    <el-table style="width: 100%" :data="list">
+    <el-table style="width: 100%" :data="list" v-loading="loading">
       <el-table-column prop="title" width="600" label="标题"></el-table-column>
       <el-table-column
         prop="comment_status"
@@ -53,6 +53,7 @@ export default {
       this.getComment()
     },
     getComment () {
+      this.loading = true
       this.$axios({
         url: '/articles',
         params: {
@@ -63,6 +64,7 @@ export default {
       }).then(result => {
         this.list = result.data.results
         this.page.total = result.data.total_count
+        this.loading = false
       })
     },
     formatterBoolean (row, column, cellValue, index) {
