@@ -39,7 +39,7 @@ axios.interceptors.response.use(function (response) {
     default:
       break
   }
-  Message({ message })
-  return new Promise(function () { })
+  Message({ type: 'warning', message })
+  return Promise.reject(error)
 })
 export default axios
