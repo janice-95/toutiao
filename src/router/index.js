@@ -3,7 +3,7 @@ import VueRouter from 'vue-router'
 import Home from '../views/home'
 import Login from '../views/login'
 import Home2 from '../views/home/home.vue'
-import Comment from '../components/common/bread-crumb.vue'
+
 Vue.use(VueRouter)
 
 const routes = [
