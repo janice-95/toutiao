@@ -79,7 +79,7 @@ export default {
     open (msg, collect) {
       this.$message({
         type: msg,
-        message: collect
+        message: '收藏'
       })
     },
     collectOrCancel (item) {
