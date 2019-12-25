@@ -23,8 +23,8 @@
           >
             <img :src="item.url" alt />
             <el-row class="operate" justify="space-around" type="flex">
-              <i class="el-icon-star-on"></i>
-              <i class="el-icon-delete-solid"></i>
+              <i class="el-icon-star-on" @click="collectOrCancel(item);open()" :style="{color: item.is_collected ? 'red' : '#000'}"></i>
+              <i class="el-icon-delete-solid" @click="delMaterial(item.id)"></i>
             </el-row>
           </el-card>
         </div>
@@ -41,8 +41,8 @@
           >
             <img :src="item.url" alt />
             <el-row class="operate" justify="space-around" type="flex">
-              <i class="el-icon-star-on"></i>
-              <i class="el-icon-delete-solid"></i>
+              <i class="el-icon-star-on" @click="collectOrCancel(item)" :style="{color: item.is_collected ? 'red' : '#000'}"></i>
+              <i class="el-icon-delete-solid" @click="delMaterial(item.id)"></i>
             </el-row>
           </el-card>
         </div>
@@ -75,6 +75,36 @@ export default {
     }
   },
   methods: {
+    // 取消或者收藏
+    open (msg, collect) {
+      this.$message({
+        type: msg,
+        message: collect
+      })
+    },
+    collectOrCancel (item) {
+      this.$axios({
+        method: 'put',
+        url: `/user/images/${item.id}`,
+        data: {
+          collect: !item.is_collected
+          // 取反 因为 收藏  =>取消收藏
+        }
+      }).then(result => {
+        this.getMaterial() // 重新拉取数据
+      })
+    },
+    // 删除素材
+    delMaterial (id) {
+      this.$confirm('你确定要删除此图片吗?').then(() => {
+        this.$axios({
+          method: 'delete',
+          url: `/user/images/${id}`
+        }).then(() => {
+          this.getMaterial() // 重新拉取数据
+        })
+      })
+    },
     // 上传图片的方法
     uploadImg (params) {
       this.loading = true
