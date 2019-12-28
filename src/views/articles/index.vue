@@ -7,7 +7,7 @@
     <el-form>
       <!-- 文章状态 0-草稿，1-待审核，2-审核通过，3-审核失败，4-已删除 -->
       <el-form-item label="文章状态:">
-        <el-radio-group v-model="searchForm.status">
+        <el-radio-group v-model="searchForm.status" @change="changeCondition">
           <el-radio :label="5">全部</el-radio>
           <el-radio :label="0">草稿</el-radio>
           <el-radio :label="1">待审核</el-radio>
@@ -17,7 +17,7 @@
       </el-form-item>
 
       <el-form-item label="频道列表:">
-        <el-select v-model="searchForm.channel_id" placeholder="请选择">
+        <el-select v-model="searchForm.channel_id" placeholder="请选择频道"  @change="changeCondition">
           <el-option v-for="item in channels" :key="item.id" :label="item.name" :value="item.id"></el-option>
         </el-select>
       </el-form-item>
@@ -26,11 +26,13 @@
         <div class="block">
           <span class="demonstration"></span>
           <el-date-picker
+          value-format="yyyy-MM-dd"
             v-model="searchForm.dateRange"
             type="datetimerange"
             range-separator="至"
             start-placeholder="开始日期"
             end-placeholder="结束日期"
+             @change="changeCondition"
           ></el-date-picker>
         </div>
       </el-form-item>
@@ -101,7 +103,26 @@ export default {
       }
     }
   },
+  // watch: {
+  //   searchForm: {
+  //     handler: function () {
+  //       // 此时数据已经变成最新的了
+  //       // this 指向组件实例
+  //       this.changeCondition() // 直接调用条件改变的方法
+  //     },
+  //     deep: true
+  //   }
+  // },
   methods: {
+    changeCondition () {
+      let params = {
+        status: this.searchForm.status === 5 ? null : this.searchForm.status, // 因为5是前端定义的一个标识, 如果等于5 表示查全部, 全部应该什么都不传 直接传null
+        channel_id: this.searchForm.channel_id,
+        begin_pubdate: this.searchForm.dateRange.length ? this.searchForm.dateRange[0] : null, // 开始时间
+        end_pubdate: this.searchForm.dateRange.length > 1 ? this.searchForm.dateRange[1] : null// 截止时间
+      }
+      this.getArticles(params)
+    },
     getChannels () {
       this.$axios({
         url: '/channels'
@@ -109,9 +130,10 @@ export default {
         this.channels = result.data.channels
       })
     },
-    getArticles () {
+    getArticles (params) {
       this.$axios({
-        url: '/articles'
+        url: '/articles',
+        params
       }).then(result => {
         this.list = result.data.results
       })
