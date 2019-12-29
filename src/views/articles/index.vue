@@ -28,8 +28,7 @@
           <el-date-picker
           value-format="yyyy-MM-dd"
             v-model="searchForm.dateRange"
-            type="datetimerange"
-            range-separator="至"
+            type="daterange" range-separator="至 "
             start-placeholder="开始日期"
             end-placeholder="结束日期"
              @change="changeCondition"
@@ -45,7 +44,7 @@
       <div class='article-item' v-for="item in list" :key="item.id.toString()">
           <!-- 左侧 -->
           <div class='left'>
-              <img src="../../assets/img/index_bcg.jpg" alt="">
+              <img :src="item.cover.images.length ? item.cover.images[0] : defaultImg" alt="">
               <div class='info'>
                   <span>{{item.title}}</span>
                   <el-tag :type="item.status | filterType" class='tag'>{{item.status|filterStatus}}</el-tag>
@@ -58,6 +57,15 @@
               <span><i class="el-icon-delete"></i>删除</span>
           </div>
       </div>
+      <el-pagination
+        background
+        layout="prev, pager, next"
+         style="text-align:center;font-weight: 400;margin-top:10px"
+        :page-size="page.pageSize"
+        :current-page="page.current"
+        :total="page.total"
+        @current-change="changePage">
+      </el-pagination>
   </el-card>
 </template>
 
@@ -65,12 +73,18 @@
 export default {
   data () {
     return {
+      defaultImg: require('../../assets/img/index_bcg.jpg'),
       list: [],
       channels: [],
       searchForm: {
         status: 5,
         channel_id: null,
         dateRange: []
+      },
+      page: {
+        total: 0,
+        pageSize: 10,
+        current: 1
       }
     }
   },
@@ -114,12 +128,24 @@ export default {
   //   }
   // },
   methods: {
+    //   改变页码方法
+    changePage (newPage) {
+      this.page.currentPage = newPage // 最新页码
+      this.getConditionArticle() // 调用获取文章数据
+    },
+    //   改变条件
     changeCondition () {
+      this.page.currentPage = 1 // 强制将页码重置第一页
+      this.getConditionArticle() // 调用获取文章数据
+    },
+    getConditionArticle () {
       let params = {
+        page: this.page.currentPage,
+        per_page: this.page.pageSize,
         status: this.searchForm.status === 5 ? null : this.searchForm.status, // 因为5是前端定义的一个标识, 如果等于5 表示查全部, 全部应该什么都不传 直接传null
         channel_id: this.searchForm.channel_id,
-        begin_pubdate: this.searchForm.dateRange.length ? this.searchForm.dateRange[0] : null, // 开始时间
-        end_pubdate: this.searchForm.dateRange.length > 1 ? this.searchForm.dateRange[1] : null// 截止时间
+        begin_pubdate: this.searchForm.dateRange === null ? null : this.searchForm.dateRange[0], // 开始时间
+        end_pubdate: this.searchForm.dateRange === null ? null : this.searchForm.dateRange[1] // 截止时间
       }
       this.getArticles(params)
     },
@@ -136,11 +162,13 @@ export default {
         params
       }).then(result => {
         this.list = result.data.results
+        this.page.total = result.data.total_count
       })
     }
   },
+
   created () {
-    this.getArticles()
+    this.getArticles({ page: 1, per_page: 10 })
     this.getChannels()
   }
 }
